@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Clinic Management System</h1>
+    <p>Please log in or register to continue.</p>
+
+    {% if not user.is_authenticated %}
+        <p>
+            <a href="{% url 'user_login' %}">Login</a> |
+            <a href="{% url 'patient_register' %}">Patient Registration</a> |
+            <a href="{% url 'doctor_register' %}">Doctor Registration</a>
+        </p>
+    {% endif %}
+{% endblock %}

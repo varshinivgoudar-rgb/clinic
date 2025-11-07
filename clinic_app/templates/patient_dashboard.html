@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Patient Dashboard</h1>
+    <p><a href="{% url 'book_appointment' %}">**+ Book a New Appointment**</a></p>
+
+    <h2>Your Appointments</h2>
+    {% if appointments %}
+        <table border="1" cellpadding="10" style="width:100%;">
+            <tr>
+                <th>Doctor</th>
+                <th>Date & Time</th>
+                <th>Reason</th>
+                <th>Status</th>
+            </tr>
+            {% for appt in appointments %}
+            <tr>
+                <td>Dr. {{ appt.doctor.user.first_name }}</td>
+                <td>{{ appt.appointment_date|date:"F d, Y h:i A" }}</td>
+                <td>{{ appt.reason }}</td>
+                <td><strong>{{ appt.status }}</strong></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You have no upcoming appointments.</p>
+    {% endif %}
+{% endblock %}
