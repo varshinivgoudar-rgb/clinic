@@ -1,23 +1,34 @@
 {% extends "base.html" %}
-
 {% block title %}Patient Register{% endblock %}
 
 {% block content %}
+<div class="form-container">
     <h2>Patient Self-Registration</h2>
+
+    <!-- ✅ Message popup (important part) -->
+    {% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message|escapejs }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
-        <label>Full Name:</label><br>
-        <input type="text" name="first_name" required><br><br>
-        
-        <label>Username:</label><br>
-        <input type="text" name="username" required><br><br>
-        
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
-        
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
-        
+        <label>Full Name:</label>
+        <input type="text" name="first_name" required>
+
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
         <button type="submit">Register and Login</button>
     </form>
+</div>
 {% endblock %}

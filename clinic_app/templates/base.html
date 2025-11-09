@@ -1,15 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Clinic CMS{% endblock %}</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        nav { background: #f0f0f0; padding: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; }
-        nav a { margin-right: 15px; text-decoration: none; color: #333; }
-        .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <nav>
@@ -18,7 +14,7 @@
         </div>
         <div>
             {% if user.is_authenticated %}
-                <span>Hello, **{{ user.get_full_name|default:user.username }}** ({{ user.userprofile.role }})</span>
+                <span>Hello, {{ user.get_full_name|default:user.username }} ({{ user.userprofile.role }})</span>
                 <a href="{% url 'user_logout' %}">Logout</a>
             {% else %}
                 <a href="{% url 'user_login' %}">🔑 Login</a>
@@ -26,6 +22,7 @@
             {% endif %}
         </div>
     </nav>
+
     <main>
         {% block content %}{% endblock %}
     </main>

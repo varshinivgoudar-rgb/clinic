@@ -115,9 +115,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# Point to your app's static folder (C:\ClinicCMS\clinic_app\static)
+STATICFILES_DIRS = [
+    BASE_DIR / "clinic_app" / "static",
+]
+
+# For production use (optional, safe to include)
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [BASE_DIR / "clinic_app" / "static"]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Redirect settings
+LOGIN_URL = 'user_login'        # The name of your login URL pattern
+LOGIN_REDIRECT_URL = 'home'     # After successful login, go here
+LOGOUT_REDIRECT_URL = 'user_login'  # After logout, go here
+

@@ -1,18 +1,22 @@
 {% extends "base.html" %}
-
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<div class="form-container">
     <h2>User Login</h2>
     <form method="POST">
         {% csrf_token %}
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
         <button type="submit">Login</button>
     </form>
-    <p>New Patient? <a href="{% url 'patient_register' %}">Register Here</a></p>
+
+    <p class="note">
+        New Patient? <a href="{% url 'patient_register' %}">Register Here</a>
+    </p>
+</div>
 {% endblock %}

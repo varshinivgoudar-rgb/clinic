@@ -1,14 +1,15 @@
 {% extends "base.html" %}
-
 {% block title %}Patient Dashboard{% endblock %}
 
 {% block content %}
+<div class="dashboard-container">
     <h1>Patient Dashboard</h1>
-    <p><a href="{% url 'book_appointment' %}">**+ Book a New Appointment**</a></p>
+
+    <p><a href="{% url 'book_appointment' %}">+ Book a New Appointment</a></p>
 
     <h2>Your Appointments</h2>
     {% if appointments %}
-        <table border="1" cellpadding="10" style="width:100%;">
+        <table>
             <tr>
                 <th>Doctor</th>
                 <th>Date & Time</th>
@@ -27,4 +28,5 @@
     {% else %}
         <p>You have no upcoming appointments.</p>
     {% endif %}
+</div>
 {% endblock %}

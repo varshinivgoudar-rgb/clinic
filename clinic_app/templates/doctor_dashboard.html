@@ -1,29 +1,31 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
 {% block title %}Doctor Dashboard{% endblock %}
 
 {% block content %}
+<div class="dashboard-container">
     <h1>Doctor Dashboard</h1>
     <h2>Upcoming Appointments</h2>
 
     {% if appointments %}
-        <table border="1" cellpadding="10" style="width:100%;">
+        <table>
             <tr>
                 <th>Patient Name</th>
                 <th>Appointment Time</th>
                 <th>Reason</th>
                 <th>Status</th>
-                </tr>
+            </tr>
             {% for appt in appointments %}
             <tr>
                 <td>{{ appt.patient.user.first_name }}</td>
                 <td>{{ appt.appointment_date|date:"F d, Y h:i A" }}</td>
                 <td>{{ appt.reason }}</td>
-                <td><strong style="color:red;">{{ appt.status }}</strong></td>
+                <td class="status">{{ appt.status }}</td>
             </tr>
             {% endfor %}
         </table>
     {% else %}
         <p>You have no upcoming appointments scheduled.</p>
     {% endif %}
-{% endblock %}  
+</div>
+{% endblock %}
